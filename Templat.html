@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API Web App</title>
+
+<style>
+
+/* ===== BASIC PAGE STYLE ===== */
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:#f4f4f4;
+}
+
+/* HEADER */
+
+header{
+background:#333;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+/* MAIN CONTAINER */
+
+main{
+padding:20px;
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+/* SEARCH AREA */
+
+.search-box{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+}
+
+input{
+padding:10px;
+font-size:16px;
+}
+
+button{
+padding:10px 15px;
+border:none;
+background:#007BFF;
+color:white;
+cursor:pointer;
+}
+
+button:hover{
+background:#0056b3;
+}
+
+/* RESULTS GRID */
+
+#results{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+width:90%;
+}
+
+/* CARD STYLE */
+
+.card{
+background:white;
+padding:15px;
+border-radius:8px;
+box-shadow:0 2px 5px rgba(0,0,0,0.2);
+text-align:center;
+}
+
+.card img{
+width:120px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>API Web Application</h1>
+</header>
+
+<main>
+
+<h2>Search Amiibo</h2>
+
+<!-- USER INPUT AREA -->
+
+<div class="search-box">
+
+<input id="searchInput" type="text" placeholder="Enter character name">
+
+<button onclick="searchAmiibo()">Search</button>
+
+</div>
+
+<!-- RESULTS DISPLAY AREA -->
+
+<div id="results"></div>
+
+</main>
+
+<script>
+
+/* ===== SEARCH FUNCTION ===== */
+
+function searchAmiibo(){
+
+let searchValue = document.getElementById("searchInput").value;
+
+/* API request */
+
+fetch("https://www.amiiboapi.com/api/amiibo/?name=" + searchValue)
+
+/* convert response to JSON */
+
+.then(response => response.json())
+
+/* process returned data */
+
+.then(data => {
+
+displayResults(data.amiibo);
+
+})
+
+.catch(error => console.log(error));
+
+}
+
+
+/* ===== DISPLAY RESULTS ===== */
+
+function displayResults(list){
+
+let resultsDiv = document.getElementById("results");
+
+/* clear previous results */
+
+resultsDiv.innerHTML = "";
+
+
+/* loop through API results */
+
+list.forEach(item => {
+
+/* create card element */
+
+let card = document.createElement("div");
+
+card.classList.add("card");
+
+
+/* fill card with API data */
+
+card.innerHTML = `
+<h3>${item.name}</h3>
+<p>${item.character}</p>
+<img src="${item.image}">
+<p>${item.gameSeries}</p>
+`;
+
+/* add card to page */
+
+resultsDiv.appendChild(card);
+
+});
+
+}
+
+</script>
+
+</body>
+
+</html>
