@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination Example</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+   
+    <script>
+        let page = 1;
+let perPage = 2;
+
+function showPage(){
+
+let start = (page-1)*perPage;
+let end = start + perPage;
+
+let data = students.slice(start,end);
+
+displayTable(data);
+
+}
+
+function nextPage(){
+page++;
+showPage();
+}
+
+function prevPage(){
+page--;
+showPage();
+}
+      
+    </script>
+</body>
+</html>

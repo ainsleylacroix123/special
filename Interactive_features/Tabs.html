@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Interactive Sorting Feature</title>
+    <style>
+       
+    </style>
+</head>
+<body>
+    <button onclick="showTab('tab1')">Tab1</button>
+<button onclick="showTab('tab2')">Tab2</button>
+
+<div id="tab1">Content 1</div>
+<div id="tab2">Content 2</div>
+   
+    <script>
+        function showTab(tab){
+
+document.getElementById("tab1").style.display="none";
+document.getElementById("tab2").style.display="none";
+
+document.getElementById(tab).style.display="block";
+
+}
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API Web App</title>
+
+<style>
+    
+
+</style>
+
+</head>
+
+<body>
+
+<img id="carouselImage" width="300" alt="carousel Image">
+<button onclick="prev()">Prev</button>
+<button onclick="next()">Next</button>
+
+ <script>
+    let images = ["img1.jpg","img2.jpg","img3.jpg"];
+
+let index = 0;
+
+function showImage(){
+document.getElementById("carouselImage").src = images[index];
+}
+
+function next(){
+index++;
+if(index >= images.length){
+index = 0;
+}
+showImage();
+}
+
+function prev(){
+index--;
+if(index < 0){
+index = images.length-1;
+}
+showImage();
+}
+
+showImage();
+ 
+    
+</script>
+
+</body>
+
+</html>

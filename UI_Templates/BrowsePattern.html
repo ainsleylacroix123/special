@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API Web App</title>
+
+<style>
+ 
+
+</style>
+
+</head>
+
+<body>
+    <div id="browse"></div>
+
+ <script>
+    let movies = [
+{title:"Avatar", year:2009},
+{title:"Batman", year:2022},
+{title:"Matrix", year:1999}
+];
+
+let container = document.getElementById("browse");
+
+movies.forEach(movie => {
+
+container.innerHTML += `
+<div class="card">
+<h3>${movie.title}</h3>
+<p>${movie.year}</p>
+</div>
+`;
+
+});
+ 
+    
+</script>
+
+</body>
+
+</html>

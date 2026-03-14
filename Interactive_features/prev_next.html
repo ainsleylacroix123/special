@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Previous & Next Navigation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+       
+    </style>
+</head>
+<body>
+<button onclick="prev()">Prev</button>
+<button onclick="next()">Next</button>
+    
+    <script>
+        function next(){
+index++;
+if(index >= images.length){
+index = 0;
+}
+showImage();
+}
+
+function prev(){
+index--;
+if(index < 0){
+index = images.length-1;
+}
+showImage();
+}
+
+showImage();
+       
+    </script>
+</body>
+</html>
