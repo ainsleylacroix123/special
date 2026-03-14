@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice</title>
+</head>
+<style>
+    * {
+                box-sizing: border-box;
+                margin: 5px;
+                padding: 1em;
+        }
+
+        html, body {
+                margin: 0;
+                padding: 0;
+                background-color: blueviolet;
+        }
+        body {
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+        }
+
+        html {
+                height: 100vh;
+                width: 100vw;
+        }
+
+        nav {
+                background-color: blueviolet;
+                color: white;
+                padding: 5px;
+                text-align: center;
+                height: 12vh;
+                width: 100%;
+
+        }
+
+        main{
+                height: 85vh;
+                display: flex;
+                flex-direction: row;
+        }
+
+        aside {
+                background-color: azure;
+                flex-grow: 2;
+                
+        }
+        
+        nav h1 {
+                color: white;
+                font-size: 2em;
+        }
+
+        article {
+                flex-grow: 8;
+        }
+
+      
+</style>
+<body>
+    <nav>
+        <h1>Practice Website</h1>
+    </nav>
+    
+    <main>
+        <aside>
+                Aside
+        </aside>
+        <article>
+
+        </article> 
+        </main>
+<button onclick="prev()">Prev</button>
+<button onclick="next()">Next</button>
+    
+    
+<script>
+    fetch("https://weblabs.web.app/api/holidays/barbados.json")
+    then(response => response.json())
+    then(data => {
+     let images = ["img1.jpg","img2.jpg","img3.jpg"];
+
+let index = 0;
+
+function showImage(){
+document.getElementById("carouselImage").src = images[index];
+}
+
+function next(){
+index++;
+if(index >= images.length){
+index = 0;
+}
+showImage();
+}
+
+function prev(){
+index--;
+if(index < 0){
+index = images.length-1;
+}
+showImage();
+}
+
+showImage();
+
+})
+ 
+
+</script>
+
+</body>
+
+</html>
