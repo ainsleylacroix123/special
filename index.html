@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API Web App</title>
+
+<style>
+     * {
+                box-sizing: border-box;
+                margin: 5px;
+                padding: 1em;
+        }
+
+        html, body {
+                margin: 0;
+                padding: 0;
+                background-color: rgb(2, 81, 155);
+        }
+        body {
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+        }
+
+        html {
+                height: 100vh;
+                width: 100vw;
+        }
+
+        nav {
+                background-color: rgb(8, 69, 119);
+                color: white ;
+                padding: 5px;
+                text-align: center;
+                height: 16vh;
+                width: 100%;
+                font-style: italic;
+                font-family: 'Times New Roman', Times, serif;
+                font-size: larger;
+
+        }
+
+        main{
+                height: 85vh;
+                display: flex;
+                flex-direction: row;
+        }
+
+        aside {
+                background-color: azure;
+                flex-grow: 2;
+                
+        }
+        
+        nav h1 {
+                color: white;
+                font-size: 2em;
+        }
+
+        
+
+         .gallery{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+}
+
+.gallery img{
+width:100vw;
+height:100vh;
+object-fit:cover;
+}
+
+.sidenav {
+  height: 100%; 
+  width: 0; 
+  position: fixed; 
+  z-index: 1; 
+  top: 0; 
+  left: 0;
+  background-color: #312727; 
+  overflow-x: hidden; 
+  padding-top: 60px; 
+  transition: 0.5s; 
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+next, prev {
+  background-color: #16cc1c; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+
+</style>
+</head>
+
+<body>
+     <nav>
+        <h1>Dog Breeds </h1>
+    </nav>
+    
+    
+
+        <div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#">History</a>
+  <a href="#">Birth Lineage</a>
+  <a href="#">Types of Breeds</a>
+  <a href="#">Contact</a>
+</div>
+
+<span onclick="openNav()">-----Open Sidebar </span>
+
+<div id="main">
+
+</div>
+
+<button onclick="prev()">Prev</button>
+<button onclick="next()">Next</button>
+    
+
+
+<script>
+var images = [
+  "https://cdn2.thedogapi.com/images/BJa4kxc4X.jpg",
+  "https://cdn2.thedogapi.com/images/r1f_ll5VX.jpg",
+  "https://cdn2.thedogapi.com/images/Hy3H7g94X.jpg",
+  "https://cdn2.thedogapi.com/images/SkJ3blcN7.jpg",
+  "https://cdn2.thedogapi.com/images/B1svZgqE7.jpg"
+];
+var index = 0;
+function showImage(){
+  var img = document.getElementById("dogImage");
+  if(!img){
+    img = document.createElement("img");
+    img.id = "dogImage";
+    document.getElementById("main").appendChild(img);
+  }
+  img.src = images[index];
+}
+
+function openNav() {
+  document.getElementById("mySidenav").style.width = "280px";
+}
+    function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+ function next(){
+index++;
+if(index >= images.length){
+index = 0;
+}
+showImage();
+}
+
+function prev(){
+index--;
+if(index < 0){
+index = images.length-1;
+}
+showImage();
+}
+
+showImage();
+</script>
+
+</body>
+
+</html>
